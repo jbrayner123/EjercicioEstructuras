@@ -105,24 +105,24 @@ Antes de comenzar, asegúrate de tener instalado:
 
 Abre MySQL Workbench o la consola de MySQL y ejecuta:
 
-\`\`\`sql
+```sql
 CREATE DATABASE pathfinder_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-\`\`\`
+```
 
 #### **Paso 1.2: Crear usuario (opcional pero recomendado)**
 
-\`\`\`sql
+```sql
 CREATE USER 'pathfinder_user'@'localhost' IDENTIFIED BY 'tu_password_seguro';
 GRANT ALL PRIVILEGES ON pathfinder_db.* TO 'pathfinder_user'@'localhost';
 FLUSH PRIVILEGES;
-\`\`\`
+```
 
 #### **Paso 1.3: Verificar la conexión**
 
-\`\`\`bash
+```bash
 mysql -u pathfinder_user -p pathfinder_db
 # Ingresa tu contraseña cuando te lo pida
-\`\`\`
+```
 
 ---
 
@@ -130,42 +130,42 @@ mysql -u pathfinder_user -p pathfinder_db
 
 #### **Paso 2.1: Navegar a la carpeta del backend**
 
-\`\`\`bash
+```bash
 cd ./backend
-\`\`\`
+```
 
 #### **Paso 2.2: Crear y activar entorno virtual**
 
 **Opción A: Con UV (recomendado)**
-\`\`\`bash
+```bash
 uv venv
 source .venv/bin/activate  # En Windows Git Bash: source .venv/Scripts/activate
-\`\`\`
+```
 
 **Opción B: Con venv**
-\`\`\`bash
+```bash
 python -m venv .venv
 source .venv/bin/activate  # En Windows Git Bash: source .venv/Scripts/activate
-\`\`\`
+```
 
 #### **Paso 2.3: Instalar dependencias**
 
 **Con UV:**
-\`\`\`bash
+```bash
 uv pip install -r requirements.txt
-\`\`\`
+```
 
 **Con pip:**
-\`\`\`bash
+```bash
 pip install -r requirements.txt
-\`\`\`
+```
 
 #### **Paso 2.4: Configurar variables de entorno**
 
 
-Edita \`.env\` con este contenido:
+Edita `.env` con este contenido:
 
-\`\`\`env
+```env
 # Base de datos
 MYSQL_USER=pathfinder_user
 MYSQL_PASSWORD=tu_password_seguro
@@ -180,22 +180,22 @@ ACCESS_TOKEN_EXPIRES_MINUTES=60
 
 # CORS
 CORS_ORIGINS=http://localhost:5173
-\`\`\`
+```
 
 
 #### **Paso 2.5: Crear las tablas**
 
 Las tablas se crean automáticamente al iniciar el backend, pero puedes verificar con:
 
-\`\`\`bash
+```bash
 uv run python -c "from app.db import init_db; init_db()"
-\`\`\`
+```
 
 #### **Paso 2.6: Verificar que el backend funciona**
 
-\`\`\`bash
+```bash
 uv run uvicorn app.main:app --reload --port 8000
-\`\`\`
+```
 
 Abre tu navegador en: http://localhost:8000/docs
 
@@ -207,35 +207,35 @@ Deberías ver la documentación interactiva de la API (Swagger UI).
 
 #### **Paso 3.1: Ir a la carpeta frontend**
 
-\`\`\`bash
+```bash
 cd ./frontend
-\`\`\`
+```
 
 #### **Paso 3.2: Instalar dependencias**
 
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 #### **Paso 3.3: Configurar variables de entorno**
 
-Crea el archivo \`.env\` en la carpeta \`frontend/\`:
+Crea el archivo `.env` en la carpeta `frontend/`:
 
-\`\`\`bash
+```bash
 touch .env
-\`\`\`
+```
 
-Edita \`.env\` con este contenido:
+Edita `.env` con este contenido:
 
-\`\`\`env
+```env
 VITE_API_URL=http://127.0.0.1:8000
-\`\`\`
+```
 
 #### **Paso 3.4: Verificar que el frontend funciona**
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 Abre tu navegador en: http://localhost:5173
 
@@ -250,39 +250,39 @@ Para poblar la base de datos con datos de ejemplo (ciudades y conexiones):
 ### **Paso 1: Asegúrate de que el backend esté corriendo**
 
 En una terminal:
-\`\`\`bash
+```bash
 cd ~/OneDrive/Escritorio/EntregaFinal/taller_final/backend
 uv run uvicorn app.main:app --reload --port 8000
-\`\`\`
+```
 
 ### **Paso 2: Ejecutar el script de carga**
 
 En **otra terminal**:
-\`\`\`bash
+```bash
 cd ~/OneDrive/Escritorio/EntregaFinal/taller_final/backend
 uv run python scripts/load_seed.py
-\`\`\`
+```
 
 ### **Salida esperada:**
 
-\`\`\`
+```
 🌱 Iniciando carga de datos semilla...
 ✅ 10 nodos cargados correctamente
 ✅ 15 aristas cargadas correctamente
 🎉 ¡Datos semilla cargados exitosamente!
-\`\`\`
+```
 
 ### **¿Qué hace este script?**
 
-1. Lee los archivos CSV (\`data/nodes.csv\` y \`data/edges.csv\`)
+1. Lee los archivos CSV (`data/nodes.csv` y `data/edges.csv`)
 2. Crea los nodos en la base de datos
 3. Crea las aristas relacionando nodos por nombre
 4. Es **idempotente** (puedes ejecutarlo varias veces sin duplicar datos)
 
 ### **Estructura de los archivos CSV:**
 
-**\`data/nodes.csv\`:**
-\`\`\`csv
+**`data/nodes.csv`:**
+```csv
 name
 Medellín
 Cali
@@ -294,10 +294,10 @@ Pereira
 Manizales
 Santa Marta
 Ibagué
-\`\`\`
+```
 
-**\`data/edges.csv\`:**
-\`\`\`csv
+**`data/edges.csv`:**
+```csv
 src_name,dst_name,weight
 Medellín,Cali,420.5
 Cali,Bogotá,460.0
@@ -314,7 +314,7 @@ Medellín,Manizales,180.0
 Bogotá,Pereira,330.0
 Barranquilla,Santa Marta,93.0
 Bucaramanga,Medellín,380.0
-\`\`\`
+```
 
 ---
 
@@ -323,20 +323,20 @@ Bucaramanga,Medellín,380.0
 ### **Paso 1: Iniciar el Backend**
 
 En una terminal:
-\`\`\`bash
+```bash
 cd ~/OneDrive/Escritorio/EntregaFinal/taller_final/backend
 uv run uvicorn app.main:app --reload --port 8000
-\`\`\`
+```
 
 El backend estará disponible en: http://localhost:8000
 
 ### **Paso 2: Iniciar el Frontend**
 
 En **otra terminal**:
-\`\`\`bash
+```bash
 cd ~/OneDrive/Escritorio/EntregaFinal/taller_final/frontend
 npm run dev
-\`\`\`
+```
 
 El frontend estará disponible en: http://localhost:5173
 
@@ -344,7 +344,7 @@ El frontend estará disponible en: http://localhost:5173
 
 1. Abre tu navegador en http://localhost:5173
 2. Haz clic en **"Regístrate"**
-3. Crea un usuario (ejemplo: \`admin\` / \`admin123\`)
+3. Crea un usuario (ejemplo: `admin` / `admin123`)
 4. Inicia sesión con tus credenciales
 5. ¡Explora la aplicación!
 
@@ -387,7 +387,7 @@ El frontend estará disponible en: http://localhost:5173
 
 ## 📁 Estructura del Proyecto
 
-\`\`\`
+```
 taller_final/
 ├── backend/
 │   ├── app/
@@ -436,7 +436,7 @@ taller_final/
 │   └── vite.config.js
 │
 ├── README.md                    # Este archivo
-\`\`\`
+```
 
 
 ---
@@ -447,32 +447,32 @@ taller_final/
 
 | Método | Endpoint | Descripción | Body |
 |--------|----------|-------------|------|
-| \`POST\` | \`/auth/register\` | Registrar nuevo usuario | \`{"username": "...", "password": "..."}\` |
-| \`POST\` | \`/auth/login\` | Iniciar sesión (retorna JWT) | Form: \`username=...&password=...\` |
-| \`GET\` | \`/auth/me\` | Obtener usuario autenticado | Headers: \`Authorization: Bearer <token>\` |
+| `POST` | `/auth/register` | Registrar nuevo usuario | `{"username": "...", "password": "..."}` |
+| `POST` | `/auth/login` | Iniciar sesión (retorna JWT) | Form: `username=...&password=...` |
+| `GET` | `/auth/me` | Obtener usuario autenticado | Headers: `Authorization: Bearer <token>` |
 
 ### **Nodos (Protegidos - requieren JWT)**
 
 | Método | Endpoint | Descripción | Body |
 |--------|----------|-------------|------|
-| \`GET\` | \`/graph/nodes\` | Listar todos los nodos | - |
-| \`POST\` | \`/graph/nodes\` | Crear un nuevo nodo | \`{"name": "..."}\` |
-| \`DELETE\` | \`/graph/nodes/{id}\` | Eliminar nodo por ID | - |
+| `GET` | `/graph/nodes` | Listar todos los nodos | - |
+| `POST` | `/graph/nodes` | Crear un nuevo nodo | `{"name": "..."}` |
+| `DELETE` | `/graph/nodes/{id}` | Eliminar nodo por ID | - |
 
 ### **Aristas (Protegidos - requieren JWT)**
 
 | Método | Endpoint | Descripción | Body |
 |--------|----------|-------------|------|
-| \`GET\` | \`/graph/edges\` | Listar todas las aristas | - |
-| \`POST\` | \`/graph/edges\` | Crear una nueva arista | \`{"src_id": 1, "dst_id": 2, "weight": 10.5}\` |
-| \`DELETE\` | \`/graph/edges/{id}\` | Eliminar arista por ID | - |
+| `GET` | `/graph/edges` | Listar todas las aristas | - |
+| `POST` | `/graph/edges` | Crear una nueva arista | `{"src_id": 1, "dst_id": 2, "weight": 10.5}` |
+| `DELETE` | `/graph/edges/{id}` | Eliminar arista por ID | - |
 
 ### **Algoritmos (Protegidos - requieren JWT)**
 
 | Método | Endpoint | Descripción | Parámetros |
 |--------|----------|-------------|------------|
-| \`GET\` | \`/graph/bfs\` | Ejecutar BFS desde nodo inicial | \`?start_id=1\` |
-| \`GET\` | \`/graph/shortest-path\` | Calcular camino más corto (Dijkstra) | \`?src_id=1&dst_id=5\` |
+| `GET` | `/graph/bfs` | Ejecutar BFS desde nodo inicial | `?start_id=1` |
+| `GET` | `/graph/shortest-path` | Calcular camino más corto (Dijkstra) | `?src_id=1&dst_id=5` |
 
 ---
 
@@ -514,7 +514,7 @@ taller_final/
 ### **Error: "Cannot connect to MySQL"**
 
 **Solución:**
-\`\`\`bash
+```bash
 # Verifica que MySQL esté corriendo
 mysql --version
 
@@ -523,7 +523,7 @@ cat backend/.env
 
 # Intenta conectarte manualmente
 mysql -u pathfinder_user -p pathfinder_db
-\`\`\`
+```
 
 ### **Error: "401 Unauthorized"**
 
