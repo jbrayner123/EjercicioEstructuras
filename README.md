@@ -251,7 +251,7 @@ Para poblar la base de datos con datos de ejemplo (ciudades y conexiones):
 
 En una terminal:
 ```bash
-cd ~/OneDrive/Escritorio/EntregaFinal/taller_final/backend
+cd ./backend
 uv run uvicorn app.main:app --reload --port 8000
 ```
 
@@ -259,7 +259,7 @@ uv run uvicorn app.main:app --reload --port 8000
 
 En **otra terminal**:
 ```bash
-cd ~/OneDrive/Escritorio/EntregaFinal/taller_final/backend
+cd ./backend
 uv run python scripts/load_seed.py
 ```
 
