@@ -224,6 +224,7 @@ En **otra terminal**:
 cd ./backend
 uv run python scripts/load_seed.py
 ```
+NOTA: Debe de estar en el mismo entorno virtual
 
 ### **Salida esperada:**
 
