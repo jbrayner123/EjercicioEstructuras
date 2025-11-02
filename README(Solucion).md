@@ -131,7 +131,7 @@ mysql -u pathfinder_user -p pathfinder_db
 #### **Paso 2.1: Navegar a la carpeta del backend**
 
 \`\`\`bash
-cd ~/OneDrive/Escritorio/EntregaFinal/taller_final/backend
+cd ./backend
 \`\`\`
 
 #### **Paso 2.2: Crear y activar entorno virtual**
@@ -208,7 +208,7 @@ Deberías ver la documentación interactiva de la API (Swagger UI).
 #### **Paso 3.1: Ir a la carpeta frontend**
 
 \`\`\`bash
-cd ~/OneDrive/Escritorio/EntregaFinal/taller_final/frontend
+cd ./frontend
 \`\`\`
 
 #### **Paso 3.2: Instalar dependencias**
