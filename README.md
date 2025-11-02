@@ -109,23 +109,6 @@ Abre MySQL Workbench o la consola de MySQL y ejecuta:
 CREATE DATABASE pathfinder_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-#### **Paso 1.2: Crear usuario (opcional pero recomendado)**
-
-```sql
-CREATE USER 'pathfinder_user'@'localhost' IDENTIFIED BY 'tu_password_seguro';
-GRANT ALL PRIVILEGES ON pathfinder_db.* TO 'pathfinder_user'@'localhost';
-FLUSH PRIVILEGES;
-```
-
-#### **Paso 1.3: Verificar la conexión**
-
-```bash
-mysql -u pathfinder_user -p pathfinder_db
-# Ingresa tu contraseña cuando te lo pida
-```
-
----
-
 ### 2. Backend (FastAPI)
 
 #### **Paso 2.1: Navegar a la carpeta del backend**
@@ -167,11 +150,13 @@ Edita `.env` con este contenido:
 
 ```env
 # Base de datos
-MYSQL_USER=pathfinder_user
+MYSQL_USER=pUSER
 MYSQL_PASSWORD=tu_password_seguro
 MYSQL_HOST=localhost
 MYSQL_PORT=3306
 MYSQL_DATABASE=pathfinder_db
+# Base de datos con MYSQL_URL
+MYSQL_URL=mysql+pymysql://usuario:contraseña@localhost:3306/pathfinder_db?charset=utf8mb4
 
 # JWT
 JWT_SECRET=tu_clave_secreta_muy_segura_cambiala_en_produccion
@@ -182,16 +167,7 @@ ACCESS_TOKEN_EXPIRES_MINUTES=60
 CORS_ORIGINS=http://localhost:5173
 ```
 
-
-#### **Paso 2.5: Crear las tablas**
-
-Las tablas se crean automáticamente al iniciar el backend, pero puedes verificar con:
-
-```bash
-uv run python -c "from app.db import init_db; init_db()"
-```
-
-#### **Paso 2.6: Verificar que el backend funciona**
+#### **Paso 2.5: Verificar que el backend funciona**
 
 ```bash
 uv run uvicorn app.main:app --reload --port 8000
@@ -217,21 +193,7 @@ cd ./frontend
 npm install
 ```
 
-#### **Paso 3.3: Configurar variables de entorno**
-
-Crea el archivo `.env` en la carpeta `frontend/`:
-
-```bash
-touch .env
-```
-
-Edita `.env` con este contenido:
-
-```env
-VITE_API_URL=http://127.0.0.1:8000
-```
-
-#### **Paso 3.4: Verificar que el frontend funciona**
+#### **Paso 3.3: Verificar que el frontend funciona**
 
 ```bash
 npm run dev
@@ -324,7 +286,7 @@ Bucaramanga,Medellín,380.0
 
 En una terminal:
 ```bash
-cd ~/OneDrive/Escritorio/EntregaFinal/taller_final/backend
+cd ./backend
 uv run uvicorn app.main:app --reload --port 8000
 ```
 
@@ -334,7 +296,7 @@ El backend estará disponible en: http://localhost:8000
 
 En **otra terminal**:
 ```bash
-cd ~/OneDrive/Escritorio/EntregaFinal/taller_final/frontend
+cd ./frontend
 npm run dev
 ```
 
