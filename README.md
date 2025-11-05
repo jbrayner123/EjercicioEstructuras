@@ -24,7 +24,7 @@
 - [Decisiones Técnicas](#-decisiones-técnicas)
 - [Limitaciones y Mejoras Futuras](#-limitaciones-y-mejoras-futuras)
 - [Solución de Problemas Comunes](#-solución-de-problemas-comunes)
-- [Pruebas Visuales](#-pruebas_visuales)
+- [Pruebas Visuales](#-pruebas-visuales)
 ---
 
 ## 🎯 Descripción
