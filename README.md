@@ -4,7 +4,6 @@
 **Stack:** FastAPI · MySQL · JWT · React (Vite)  
 **Algoritmos:** BFS (árbol BFS) y Dijkstra (camino mínimo)  
 **Autores:** Jose Brayner Minotta ruiz, Emmanuel Solartes Aguirres, Alejandro Castillo Arce  
-**PRuebas Visuales (Video-Fotos):** https://drive.google.com/drive/folders/1UjHDM9NCRB60D1JgOeLSpKGsekefw7ez?usp=sharing
 ---
 
 ## 📋 Tabla de Contenidos
@@ -25,7 +24,7 @@
 - [Decisiones Técnicas](#-decisiones-técnicas)
 - [Limitaciones y Mejoras Futuras](#-limitaciones-y-mejoras-futuras)
 - [Solución de Problemas Comunes](#-solución-de-problemas-comunes)
-
+- [Pruebas Visuales](#-pruebas_visuales)
 ---
 
 ## 🎯 Descripción
@@ -505,5 +504,9 @@ mysql -u pathfinder_user -p pathfinder_db
 | **Frontend SPA** | 25 | ✅ 25/25 |
 | **Datos Semilla + Docs** | 10 | ✅ 10/10 |
 | **TOTAL** | **100** | **✅ 100/100** |
+
+## Pruebas Visuales
+
+https://drive.google.com/drive/folders/1UjHDM9NCRB60D1JgOeLSpKGsekefw7ez?usp=sharing
 
 **¡Gracias por revisar PathFinder!** 🗺️✨
