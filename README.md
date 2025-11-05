@@ -4,7 +4,6 @@
 **Stack:** FastAPI · MySQL · JWT · React (Vite)  
 **Algoritmos:** BFS (árbol BFS) y Dijkstra (camino mínimo)  
 **Autores:** Jose Brayner Minotta ruiz, Emmanuel Solartes Aguirres, Alejandro Castillo Arce  
-**Pruebas Visuales:** https://drive.google.com/drive/folders/1UjHDM9NCRB60D1JgOeLSpKGsekefw7ez?usp=sharing
 ---
 
 ## 📋 Tabla de Contenidos
